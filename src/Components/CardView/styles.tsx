@@ -30,5 +30,11 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     textAlign: "center"
+  },
+  carImage: {
+    flex: 1,
+    marginBottom: 20,
+    width: "100%",
+    height: "100%",
   }
 });

@@ -1,0 +1,1 @@
+export const CARS_ASSETS_BASE_URL = "cars";
