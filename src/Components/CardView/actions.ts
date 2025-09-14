@@ -15,7 +15,30 @@ export const loadCarData = async (
     }
 }
 
-export const handlePreviousCar = async () => {}
+export const handlePreviousCar = async (
+    carData:  carModel | null, 
+    setCarData: React.Dispatch<React.SetStateAction<carModel | null>>
+) => {
+    let response = null
+    if( carData && carData.id > 1){
+        response = await fetchGetCarData(carData?.id-1)
+    }
+    if(response){
+        setCarData(response)
+    }
+}
 
-export const handleNextCar = async () => {}
+export const handleNextCar = async (
+    carData:  carModel | null, 
+    setCarData: React.Dispatch<React.SetStateAction<carModel | null>>
+) => {
+    let response = null
+    if( carData && carData.id < 10){
+        response = await fetchGetCarData(carData?.id+1)
+    }
+    if(response){
+        setCarData(response)
+    }
+}
+
 
