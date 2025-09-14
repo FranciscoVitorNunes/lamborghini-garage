@@ -1,13 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Image, Text, Button } from 'react-native';
 
 import { styles } from './styles';
 import { Divider } from '../Divider';
 import { CARS_ASSETS_BASE_URL } from '../../constants/car';
 import { BuyButton } from '../BuyButton';
+import { loadCarData } from './actions';
+import { carModel } from './props';
 const logo = require('./../../../assets/logo.png');
 
 export function CardView() {
+
+    const id = 1;
+    const [carData, setCarData] = useState<carModel | null>(null);
+
+    useEffect(()=>{(async()=>{
+        await loadCarData(id , setCarData);}
+    )();
+    },[])
 
     const renderCarDetails = ()=>(
         <View>

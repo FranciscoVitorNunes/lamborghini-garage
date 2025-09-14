@@ -6,7 +6,7 @@ interface apiResponse {
     cars: carModel[]
 }
 
-export const fetcGetCardata = async (id: number) => {
+export const fetchGetCarData = async (id: number) => {
     try{
     const response = await axios.get<apiResponse>(CARS_API_BASE_URL);
     const carData = response.data.cars.find((car) => car.id === id);
