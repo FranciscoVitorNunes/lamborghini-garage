@@ -18,7 +18,4 @@ export const loadCarData = async (
 export const handlePreviousCar = async () => {}
 
 export const handleNextCar = async () => {}
-function setCarData(data: carModel) {
-    throw new Error("Function not implemented.");
-}
 

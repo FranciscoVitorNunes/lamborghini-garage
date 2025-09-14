@@ -22,18 +22,18 @@ export function CardView() {
     const renderCarDetails = ()=>(
         <View>
             <Text style={styles.carBrand}>Lamborghini</Text>
-            <Text style={styles.carName}>MODEL</Text>
+            <Text style={styles.carName}>{carData?.name}</Text>
         </View>
     )
     const renderCarImage = () => (
         <Image 
-        source={{uri: `${CARS_ASSETS_BASE_URL}/car.png`}}
+        source={{uri: `${CARS_ASSETS_BASE_URL}${carData?.id}/car.png`}}
         style={styles.carImage}></Image>
     )
     const renderPriceControlls = () =>(
         <View style={styles.priceContainer}>
             <Button title='<' color="#01A6B3" onPress={()=>{}}/>
-            <Text style={styles.price}>$ 500,000</Text>
+            <Text style={styles.price}>{carData?.price}</Text>
             <Button title='>'/>
         </View>
     )
