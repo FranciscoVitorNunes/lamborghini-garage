@@ -36,5 +36,16 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     width: "100%",
     height: "100%",
+  },
+  priceContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  price: {
+    color: "#fff",
+    fontSize: 20,
   }
 });
