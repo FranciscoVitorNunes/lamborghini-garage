@@ -5,7 +5,7 @@ import { styles } from './styles';
 import { Divider } from '../Divider';
 import { CARS_ASSETS_BASE_URL } from '../../constants/car';
 import { BuyButton } from '../BuyButton';
-import { loadCarData } from './actions';
+import { handlePreviousCar, loadCarData } from './actions';
 import { carModel } from './props';
 const logo = require('./../../../assets/logo.png');
 
@@ -32,9 +32,9 @@ export function CardView() {
     )
     const renderPriceControlls = () =>(
         <View style={styles.priceContainer}>
-            <Button title='<' color="#01A6B3" onPress={()=>{}}/>
+            <Button title='<' color="#01A6B3" onPress={()=>handlePreviousCar(carData, setCarData)}/>
             <Text style={styles.price}>{carData?.price}</Text>
-            <Button title='>'/>
+            <Button title='>' onPress={()=>handlePreviousCar(carData, setCarData)}/>
         </View>
     )
 
