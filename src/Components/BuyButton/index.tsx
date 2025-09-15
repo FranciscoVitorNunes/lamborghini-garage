@@ -5,11 +5,9 @@ import { styles } from './style';
 
 export function BuyButton() {
   return (
-    <View style={styles.container}>
         <TouchableOpacity style={styles.button}>
-            <AntDesign name="shopping-cart" size={24} color="black" style={styles.icon}/>
+            <AntDesign name="shopping-cart" size={24} color="white" style={styles.icon}/>
             <Text style={styles.ButtonText }>Buy Now</Text>
         </TouchableOpacity>
-    </View>
   );
 }

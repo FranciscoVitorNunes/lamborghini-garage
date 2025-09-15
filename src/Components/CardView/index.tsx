@@ -5,50 +5,64 @@ import { styles } from './styles';
 import { Divider } from '../Divider';
 import { CARS_ASSETS_BASE_URL } from '../../constants/car';
 import { BuyButton } from '../BuyButton';
-import { handlePreviousCar, loadCarData } from './actions';
+import { handleNextCar, handlePreviousCar, loadCarData } from './actions';
 import { carModel } from './props';
 const logo = require('./../../../assets/logo.png');
 
 export function CardView() {
 
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
     const id = 1;
     const [carData, setCarData] = useState<carModel | null>(null);
 
-    useEffect(()=>{(async()=>{
-        await loadCarData(id , setCarData);}
-    )();
-    },[])
+    useEffect(() => {
+    (async () => {
+        try {
+        await loadCarData(id, setCarData);
+        } catch (err) {
+        setError("Erro ao carregar os dados do carro");
+        } finally {
+        setLoading(false);
+        }
+    })();
+    }, []);
 
     const renderCarDetails = ()=>(
         <View>
             <Text style={styles.carBrand}>Lamborghini</Text>
-            <Text style={styles.carName}>{carData?.name}</Text>
+            <Text style={styles.carName}>{carData?.carName}</Text>
         </View>
     )
     const renderCarImage = () => (
         <Image 
-        source={{uri: `${CARS_ASSETS_BASE_URL}${carData?.id}/car.png`}}
+        source={{uri: `${CARS_ASSETS_BASE_URL}${carData?.id}.png`}}
         style={styles.carImage}></Image>
     )
     const renderPriceControlls = () =>(
         <View style={styles.priceContainer}>
-            <Button title='<' color="#01A6B3" onPress={()=>handlePreviousCar(carData, setCarData)}/>
-            <Text style={styles.price}>{carData?.price}</Text>
-            <Button title='>' onPress={()=>handlePreviousCar(carData, setCarData)}/>
+            <Button title='<' color="#8d8d8dff" onPress={()=>handlePreviousCar(carData, setCarData)}/>
+            <Button title='>' color="#8d8d8dff" onPress={()=>handleNextCar(carData, setCarData)}/>
         </View>
     )
 
   return (
     <View style={styles.imageContainer}>
-        <View style={styles.logoContainer}>
+        <View style={styles.container}>
         <Image source={logo} style={styles.imageLogo}></Image>
         </View>
         <Divider></Divider>
-        {renderCarDetails()}
-        {renderCarImage()}
+        <View style={styles.container}>
+            {renderCarImage()}
+            {renderCarDetails()}
+        </View>
         <Divider></Divider>
-        <BuyButton></BuyButton>
-        {renderPriceControlls()}
+        <View style={styles.container}>
+            <Text style={styles.price}>{carData?.price}</Text>
+            <BuyButton></BuyButton>
+            {renderPriceControlls()}
+        </View>
 
     </View>
   );

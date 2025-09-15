@@ -1,17 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
-    width: "80%",
-    borderWidth: 2,
-    borderColor: "#333333",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
     button: {
     flexDirection: "row",
-    backgroundColor: "#01A6B3",
+    backgroundColor: "#8d8d8dff",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

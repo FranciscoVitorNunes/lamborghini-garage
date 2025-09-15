@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     height: 1,
     width: "80%",
-    backgroundColor: "#01A6B3",
+    backgroundColor: "#e4e4e4ff",
     marginVertical: 10 
   }
 });
